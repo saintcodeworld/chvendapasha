@@ -324,13 +324,13 @@ const CaptchaChallenge: React.FC<CaptchaChallengeProps> = ({ onVerify, onSuccess
 
                     // Sync UI state
                     let added = 0;
-                    if (milestone === 100) added = 0.0040;
-                    else if (milestone === 200) added = 0.0056;
-                    else if (milestone === 300) added = 0.0071;
-                    else if (milestone === 400) added = 0.0081;
-                    else if (milestone === 500) added = 0.0120;
+                    if (milestone === 100) added = 0.00081;
+                    else if (milestone === 200) added = 0.0011;
+                    else if (milestone === 300) added = 0.0012;
+                    else if (milestone === 400) added = 0.0016;
+                    else if (milestone === 500) added = 0.0032;
                     else if (milestone > 500) {
-                        added = 0.0070;
+                        added = 0.0016;
                     }
                     setSessionReward(prev => prev + added);
                     setRewardMessage(`+${added.toFixed(4)} SOL`);

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Dashboard from './components/Dashboard';
 import Header from './components/Header';
 import SettingsModal from './components/SettingsModal';
+import HowToPlayModal from './components/HowToPlayModal';
 import DotGrid from './components/DotGrid';
 import SignupPage from './components/SignupPage';
 import { MinerConfig } from './types';
@@ -13,6 +14,7 @@ const App: React.FC = () => {
   const [wallet, setWallet] = useState<WalletData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isHowToPlayOpen, setIsHowToPlayOpen] = useState(false);
 
   // Check for existing wallet on mount
   useEffect(() => {
@@ -102,6 +104,7 @@ const App: React.FC = () => {
           status={status}
           onLogout={handleLogout}
           onSettingsClick={() => setIsSettingsOpen(true)}
+          onHowToPlayClick={() => setIsHowToPlayOpen(true)}
         />
 
         <main className="flex-1 container mx-auto px-4 py-6 max-w-[1600px] overflow-y-auto overflow-x-hidden">
@@ -120,6 +123,10 @@ const App: React.FC = () => {
             onRedeemSuccess={addPendingBalance}
           />
         </main>
+
+        {isHowToPlayOpen && (
+          <HowToPlayModal onClose={() => setIsHowToPlayOpen(false)} />
+        )}
       </div>
     </div>
   );
