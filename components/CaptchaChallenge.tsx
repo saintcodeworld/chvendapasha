@@ -236,15 +236,18 @@ const CaptchaChallenge: React.FC<CaptchaChallengeProps> = ({ onVerify, onSuccess
                         y: groundY - 75 // Flying height
                     });
                 } else {
-                    // Normal Iceberg Spawning logic (only if no bird recently to avoid overlap)
+                    // Normal Iceberg Spawning logic
                     const lastObs = obstaclesRef.current[obstaclesRef.current.length - 1];
-                    // Keep gap
-                    const minGap = speedRef.current * 40;
+
+                    // Cap the gap so it doesn't get too wide at high speeds
+                    // speed * 40 can reach 520+. Let's cap at 400.
+                    const minGap = Math.min(speedRef.current * 35, 400);
                     const variance = Math.random() * 150;
 
-                    if (!lastObs || (width - lastObs.x > minGap + variance)) {
-                        // Don't spawn iceberg if it would overlap with an incoming bird
-                        // Simple check: random chance reduced
+                    // Failsafe: If no obstacles, force spawn immediately
+                    const shouldSpawn = !lastObs || (width - lastObs.x > minGap + variance);
+
+                    if (shouldSpawn) {
                         const h = Math.floor(Math.random() * 25) + 30;
                         obstaclesRef.current.push({
                             x: width,
@@ -254,10 +257,11 @@ const CaptchaChallenge: React.FC<CaptchaChallengeProps> = ({ onVerify, onSuccess
                             y: groundY - h
                         });
 
-                        // 15% chance for double jump iceberg
-                        if (Math.random() < 0.15) {
+                        // 20% chance for double iceberg (slightly increased challenge)
+                        if (Math.random() < 0.20) {
+                            // Only if space permits visually
                             obstaclesRef.current.push({
-                                x: width + OBSTACLE_WIDTH + 15,
+                                x: width + OBSTACLE_WIDTH + 10, // tighter double
                                 width: OBSTACLE_WIDTH,
                                 height: Math.floor(Math.random() * 15) + 25,
                                 type: 'iceberg',
