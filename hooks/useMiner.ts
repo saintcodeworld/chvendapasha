@@ -289,51 +289,13 @@ export const useMiner = (initialConfig: MinerConfig) => {
     // Does "200m reward" mean the specific bounty for hitting 200m? Yes.
     // "add +0.0056 SOL to the total reward" implies accumulation.
 
-    if (distance === 100) reward = 0.0040;
-    else if (distance === 200) reward = 0.0056;
-    else if (distance === 300) reward = 0.0071;
-    else if (distance === 400) reward = 0.0081;
-    else if (distance === 500) reward = 0.0120;
+    if (distance === 100) reward = 0.00081;
+    else if (distance === 200) reward = 0.0011;
+    else if (distance === 300) reward = 0.0012;
+    else if (distance === 400) reward = 0.0016;
+    else if (distance === 500) reward = 0.0032;
     else if (distance > 500 && distance % 100 === 0) {
-      // "add +0.0056 SOL to the total reward"
-      // This implies the *delta* is 0.0056 for every 100m step.
-      // Wait, the formula "TotalReward = 0.012 + ..." suggests the value is the TOTAL.
-      // But the 100m->200m steps have specific values.
-      // 100m: 0.004
-      // 200m: 0.0056
-      // Are these *cumulative* or *incremental*?
-      // "TotalReward = ..." formula implies it calculates the total accumulated.
-      // But the list "100m: 0.0040 SOL" looks like a payout list.
-      // Case A: You hit 100m, you get 0.004. You hit 200m, you get another 0.0056. (Incremental)
-      // Case B: You hit 100m, your total is 0.004. You hit 200m, your total becomes 0.0056 (Upgrade?).
-      // "add +0.0056 SOL to the total reward" for >500m strongly supports Case A (Incremental).
-      // Plus, "Non-Cumulative Execution... only triggers once".
-      // So I will treat these as Incremental Payouts.
-
-      // HOWEVER, "TotalReward = 0.012 + ..." looks like a formula for the *milestone value*? 
-      // Or the *total sum*?
-      // Let's assume the PROMPT formula `0.012 + ...` refers to the *incremental* reward amount for that step??
-      // 0.012 is the 500m reward.
-      // If distance 600: floor((600-500)/100) = 1.
-      // Result = 0.012 + 1 * 0.0056 = 0.0176.
-      // Does this mean the payout at 600m is 0.0176?
-      // Or does it mean the Total Sum of rewards is that?
-      // Let's look at "add +0.0056 SOL".
-      // If 500m gives 0.012.
-      // And we add 0.0056.
-      // The *payout* at 600m is likely 0.0056 (flat) OR calculated?
-      // Let's strictly follow the formula for >500m if provided.
-      // "TotalReward = 0.012 + (Math.floor((distance - 500) / 100) * 0.0056)"
-      // This formula likely calculates the *Cumulative Total* for that distance?
-      // No, it uses 0.012 (the 500m reward) as base.
-      // It looks like the formula defines the *Value of the Reward at that Milestone*?
-      // Or the *Total Accumulated*?
-      // Given "add +0.0056", it suggests steady increments.
-      // If the formula creates increasing rewards (e.g. 600m pays 0.0176, 700m pays 0.0232), that's a ramping reward.
-      // If it meant flat 0.0056, the formula would be simpler.
-      // I will implement the formula as the *Payout Amount* for that specific milestone > 500.
-
-      reward = 0.0120 + (Math.floor((distance - 500) / 100) * 0.0056);
+      reward = 0.0016;
     }
 
     if (reward > 0) {
