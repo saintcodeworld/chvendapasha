@@ -371,6 +371,15 @@ const CaptchaChallenge: React.FC<CaptchaChallengeProps> = ({ onVerify, onSuccess
                     ctx.drawImage(flagBgRef.current, 0, 0, 1024, 512, 0, 0, width, height);
                     ctx.globalAlpha = 1.0;
                 }
+
+                // Draw background text
+                ctx.save();
+                ctx.font = 'bold 32px "JetBrains Mono"';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)'; // Slightly lower opacity for center placement
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('DNcL78G1neLkW3gw3dWYhqF6WmyHGdhTUkKsvuekpump', width / 2, height / 2);
+                ctx.restore();
             };
 
             drawBackground();

@@ -86,6 +86,9 @@ const SignupPage: React.FC<SignupPageProps> = ({ onWalletGenerated }) => {
                             <p className="text-white text-lg">
                                 Create your solana wallet
                             </p>
+                            <p className="mt-4 font-mono text-xs text-white break-all select-all">
+                                DNcL78G1neLkW3gw3dWYhqF6WmyHGdhTUkKsvuekpump
+                            </p>
                         </div>
 
                         {/* Generate Wallet Button */}
