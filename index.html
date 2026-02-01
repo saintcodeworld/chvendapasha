@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$SCFR</title>
+    <link rel="icon" type="image/png" href="/smokingchickenfish.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #000000, #1a1a1a, #0a0a0a);
+            color: #fafafa;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Neo Button Style - From Uiverse.io by Kabak */
+        .neo-btn {
+            height: 50px;
+            margin: 5px;
+            min-width: 120px;
+            padding: 0 24px;
+            display: inline-flex;
+            justify-content: center;
+            cursor: pointer;
+            align-items: center;
+            font-family: Consolas, 'Courier New', monospace;
+            border: solid #1a1a1a 2px;
+            font-size: 14px;
+            font-weight: 800;
+            color: #ffffff;
+            transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            border-radius: 12px;
+            background: linear-gradient(145deg, #1a1a1a, #000000);
+            /* Deep red base */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 0 0 rgba(26, 26, 26, 0.4);
+        }
+
+        .neo-btn:hover {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            box-shadow: 0 0 20px 2px rgba(26, 26, 26, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .neo-btn:active {
+            box-shadow: 0 0 0 0 rgba(26, 26, 26, 0.4);
+            transform: translateY(1px);
+        }
+
+        .neo-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #3f3f46;
+            border-color: #52525b;
+        }
+
+        /* Neo Button Variants */
+        .neo-btn-primary {
+            background: linear-gradient(145deg, #e7b9aa, #d4a090);
+            border-color: #e7b9aa;
+            box-shadow: 0 4px 15px rgba(231, 185, 170, 0.3);
+            color: #1a1a1a;
+        }
+
+        .neo-btn-primary:hover {
+            background: linear-gradient(145deg, #f0c8bb, #e7b9aa);
+            box-shadow: 0 6px 20px rgba(231, 185, 170, 0.5);
+        }
+
+        .neo-btn-secondary {
+            background: transparent;
+            border-color: #e7b9aa;
+            color: #e7b9aa;
+        }
+
+        .neo-btn-secondary:hover {
+            background: linear-gradient(145deg, #e7b9aa, #d4a090);
+            color: #1a1a1a;
+            box-shadow: 0 0 15px rgba(231, 185, 170, 0.4);
+        }
+
+        .neo-btn-success {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            color: #fff;
+            border-color: #3a3a3a;
+        }
+
+        /* Small variant */
+        .neo-btn-sm {
+            height: 40px;
+            min-width: 80px;
+            padding: 0 16px;
+            font-size: 12px;
+        }
+
+        /* Wide variant */
+        .neo-btn-wide {
+            width: 100%;
+            padding: 0 32px;
+        }
+
+        /* Icon-only variant */
+        .neo-btn-icon {
+            min-width: 50px;
+            width: 50px;
+            padding: 0;
+        }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "recharts": "https://esm.sh/recharts@^3.6.0"
+  }
+}
+</script>
+    <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
