@@ -93,11 +93,11 @@ const CaptchaChallenge: React.FC<CaptchaChallengeProps> = ({ onVerify, onSuccess
 
     useEffect(() => {
         // Load jump sound
-        jumpAudio.current = new Audio('/sounds/chicken jump.mp3');
+        jumpAudio.current = new Audio('/dist/sounds/whale sound.mp3');
 
         // Load Character sprite
         const charImg = new Image();
-        charImg.src = '/fish model.png';
+        charImg.src = '/Без названия (1).png';
         charImg.onload = () => { characterSpriteRef.current = charImg; };
 
         // Load Mars background
@@ -363,6 +363,7 @@ const CaptchaChallenge: React.FC<CaptchaChallengeProps> = ({ onVerify, onSuccess
 
             // Update Score
             if (isPlaying) {
+                scoreRef.current += speedRef.current;
                 setScore(Math.floor(scoreRef.current));
 
                 const distance = Math.floor(scoreRef.current / 50);
@@ -391,158 +392,45 @@ const CaptchaChallenge: React.FC<CaptchaChallengeProps> = ({ onVerify, onSuccess
 
             // Drawing
             const drawBackground = () => {
-                const skyGradient = ctx.createLinearGradient(0, 0, 0, height);
-                skyGradient.addColorStop(0, '#0d0d1a');
-                skyGradient.addColorStop(0.3, '#1a1a2e');
-                skyGradient.addColorStop(0.6, '#2d2d44');
-                skyGradient.addColorStop(1, '#3a3a5a');
-                ctx.fillStyle = skyGradient;
-                ctx.fillRect(0, 0, width, height);
-
-                ctx.fillStyle = '#c0c0c0';
-                for (let i = 0; i < 50; i++) {
-                    const starX = (i * 137 + scoreRef.current * 0.01) % width;
-                    const starY = (i * 89) % (height * 0.4);
-                    ctx.beginPath();
-                    ctx.arc(starX, starY, Math.random() * 1.5 + 0.5, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-
-                const moonX = width * 0.85;
-                const moonY = height * 0.12;
-                ctx.fillStyle = '#e0e0e0';
-                ctx.beginPath();
-                ctx.arc(moonX, moonY, 35, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#0d0d1a';
-                ctx.beginPath();
-                ctx.arc(moonX + 12, moonY - 5, 30, 0, Math.PI * 2);
-                ctx.fill();
-
-                const drawChurch = (x: number, baseY: number, scale: number, color: string) => {
-                    ctx.fillStyle = color;
-                    const w = 50 * scale;
-                    const h = 100 * scale;
-                    ctx.fillRect(x, baseY - h, w, h);
-                    ctx.beginPath();
-                    ctx.moveTo(x - 10 * scale, baseY - h);
-                    ctx.lineTo(x + w / 2, baseY - h - 50 * scale);
-                    ctx.lineTo(x + w + 10 * scale, baseY - h);
-                    ctx.fill();
-                    ctx.fillRect(x + w / 2 - 5 * scale, baseY - h - 70 * scale, 10 * scale, 25 * scale);
-                    ctx.fillRect(x + w / 2 - 10 * scale, baseY - h - 60 * scale, 20 * scale, 8 * scale);
-                    ctx.fillStyle = '#d4af37';
-                    ctx.beginPath();
-                    ctx.arc(x + w / 2, baseY - h - 35 * scale, 8 * scale, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = '#b8960c';
-                    ctx.beginPath();
-                    ctx.moveTo(x + w / 2, baseY - h - 28 * scale);
-                    ctx.lineTo(x + w / 2 - 3 * scale, baseY - h - 20 * scale);
-                    ctx.lineTo(x + w / 2 + 3 * scale, baseY - h - 20 * scale);
-                    ctx.fill();
-                    ctx.fillStyle = '#ffdf00';
-                    ctx.beginPath();
-                    ctx.arc(x + w / 2, baseY - h - 35 * scale, 4 * scale, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = color;
-                    ctx.fillRect(x + w / 2 - 8 * scale, baseY - 40 * scale, 16 * scale, 30 * scale);
-                    ctx.beginPath();
-                    ctx.arc(x + w / 2, baseY - 40 * scale, 8 * scale, Math.PI, 0);
-                    ctx.fill();
-                };
-
-                drawChurch(width * 0.05, groundY, 0.6, '#1a1a2a');
-                drawChurch(width * 0.18, groundY, 0.9, '#222233');
-                drawChurch(width * 0.38, groundY, 0.5, '#181828');
-                drawChurch(width * 0.55, groundY, 1.0, '#252538');
-                drawChurch(width * 0.75, groundY, 0.7, '#1f1f2f');
-                drawChurch(width * 0.88, groundY, 0.55, '#1c1c2c');
-
-                const time = scoreRef.current * 0.02;
-                for (let i = 0; i < 12; i++) {
-                    const birdBaseX = (i * 150 + time * (2 + i % 3)) % (width + 200) - 100;
-                    const birdBaseY = height * 0.2 + Math.sin(time + i * 2) * 25 + (i % 4) * 20;
-                    const wingFlap = Math.sin(time * 3 + i * 5) * 0.5;
-                    
-                    ctx.strokeStyle = 'rgba(200, 200, 220, 0.3)';
-                    ctx.lineWidth = 4;
-                    ctx.beginPath();
-                    ctx.moveTo(birdBaseX, birdBaseY);
-                    ctx.quadraticCurveTo(birdBaseX - 10, birdBaseY - 8 + wingFlap * 12, birdBaseX - 18, birdBaseY - 4 + wingFlap * 18);
-                    ctx.stroke();
-                    ctx.beginPath();
-                    ctx.moveTo(birdBaseX, birdBaseY);
-                    ctx.quadraticCurveTo(birdBaseX + 10, birdBaseY - 8 + wingFlap * 12, birdBaseX + 18, birdBaseY - 4 + wingFlap * 18);
-                    ctx.stroke();
-
-                    ctx.strokeStyle = '#000000';
-                    ctx.lineWidth = 3;
-                    ctx.beginPath();
-                    ctx.moveTo(birdBaseX, birdBaseY);
-                    ctx.quadraticCurveTo(birdBaseX - 10, birdBaseY - 8 + wingFlap * 12, birdBaseX - 18, birdBaseY - 4 + wingFlap * 18);
-                    ctx.stroke();
-                    ctx.beginPath();
-                    ctx.moveTo(birdBaseX, birdBaseY);
-                    ctx.quadraticCurveTo(birdBaseX + 10, birdBaseY - 8 + wingFlap * 12, birdBaseX + 18, birdBaseY - 4 + wingFlap * 18);
-                    ctx.stroke();
-                    
-                    ctx.fillStyle = '#000000';
-                    ctx.beginPath();
-                    ctx.arc(birdBaseX, birdBaseY, 4, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.strokeStyle = 'rgba(200, 200, 220, 0.4)';
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-
-                for (let i = 0; i < 3; i++) {
-                    ctx.fillStyle = `rgba(40, 40, 60, ${0.15 - i * 0.04})`;
-                    ctx.fillRect(0, groundY - 50 + i * 15, width, 20);
-                }
+                // Clear canvas with transparent background
+                ctx.clearRect(0, 0, width, height);
             };
 
             drawBackground();
 
-            ctx.fillStyle = '#1a1a1a';
+            // Ground - Dusty Mars surface
+            ctx.fillStyle = '#3d1a10'; // Dark reddish brown
             ctx.fillRect(0, groundY, width, 10);
-            ctx.fillStyle = '#2a2a2a';
-            for (let i = 0; i < width; i += 30) {
-                ctx.fillRect(i, groundY, 15, 3);
-            }
 
-            // Draw Obstacles (Tombstones)
+            // Draw Obstacles
             obstaclesRef.current.forEach(obs => {
                 if (obs.type === 'duststorm') {
                     ctx.save();
                     ctx.translate(obs.x, groundY);
 
-                    const stoneHeight = obs.height;
-                    const stoneWidth = obs.width;
+                    // Draw white obstacles
+                    const rockGradient = ctx.createLinearGradient(0, -obs.height, 0, 0);
+                    rockGradient.addColorStop(0, '#ffffff'); // Pure white
+                    rockGradient.addColorStop(1, '#cccccc'); // Light grey
+                    ctx.fillStyle = rockGradient;
 
-                    const stoneGradient = ctx.createLinearGradient(0, -stoneHeight, 0, 0);
-                    stoneGradient.addColorStop(0, '#808080');
-                    stoneGradient.addColorStop(0.5, '#696969');
-                    stoneGradient.addColorStop(1, '#505050');
-                    ctx.fillStyle = stoneGradient;
-
+                    // Jagged rock shape
                     ctx.beginPath();
                     ctx.moveTo(0, 0);
-                    ctx.lineTo(0, -stoneHeight * 0.6);
-                    ctx.quadraticCurveTo(0, -stoneHeight, stoneWidth / 2, -stoneHeight);
-                    ctx.quadraticCurveTo(stoneWidth, -stoneHeight, stoneWidth, -stoneHeight * 0.6);
-                    ctx.lineTo(stoneWidth, 0);
+                    ctx.lineTo(obs.width * 0.2, -obs.height * 0.6);
+                    ctx.lineTo(obs.width * 0.5, -obs.height);
+                    ctx.lineTo(obs.width * 0.8, -obs.height * 0.7);
+                    ctx.lineTo(obs.width, 0);
                     ctx.closePath();
                     ctx.fill();
 
-                    ctx.strokeStyle = '#3a3a3a';
-                    ctx.lineWidth = 2;
+                    // Optional: Inner detail for the rock
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(obs.width * 0.3, -obs.height * 0.3);
+                    ctx.lineTo(obs.width * 0.5, -obs.height * 0.7);
                     ctx.stroke();
-
-                    ctx.fillStyle = '#4a4a4a';
-                    ctx.font = `bold ${stoneWidth * 0.3}px serif`;
-                    ctx.textAlign = 'center';
-                    ctx.fillText('RIP', stoneWidth / 2, -stoneHeight * 0.4);
 
                     ctx.restore();
                 }

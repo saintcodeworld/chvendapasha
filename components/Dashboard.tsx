@@ -53,7 +53,7 @@ const Dashboard: React.FC<DashboardProps> = ({
             <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2 flex items-center gap-4">
               {/* X Logo */}
               <div
-                onClick={() => window.open('https://x.com/i/communities/2018024950943080775/', '_blank')}
+                onClick={() => window.open('https://x.com/i/communities/2018041695649034612', '_blank')}
                 className="flex items-center gap-2 hover:bg-white/10 rounded-full px-3 py-1.5 transition-all duration-300 cursor-pointer"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-white">
@@ -89,7 +89,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           </div>
 
           {/* Top Right - Miner Controls (Withdraw UI) */}
-          <div className="absolute top-56 right-4 pointer-events-auto">
+          <div className="absolute top-20 right-4 pointer-events-auto">
             <div className="w-96">
               <MinerControls
                 status={status}

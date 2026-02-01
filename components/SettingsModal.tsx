@@ -22,11 +22,11 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, wallet }
             />
 
             {/* Modal Content */}
-            <div className="relative bg-zinc-900 border border-[#e7b9aa]/30 rounded-3xl p-8 max-w-lg w-full shadow-[0_20px_50px_rgba(231,185,170,0.15)] animate-in zoom-in-95 duration-300">
+            <div className="relative bg-zinc-900 border border-zinc-800 rounded-3xl p-8 max-w-lg w-full shadow-[0_20px_50px_rgba(139,92,246,0.15)] animate-in zoom-in-95 duration-300">
 
                 <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-2xl font-black text-[#e7b9aa] uppercase tracking-tight">
-                        Account <span className="text-[#e7b9aa]">Settings</span>
+                    <h2 className="text-2xl font-black text-white uppercase tracking-tight">
+                        Account <span className="text-white">Settings</span>
                     </h2>
                     <button
                         onClick={onClose}
@@ -41,7 +41,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, wallet }
                 <div className="space-y-6">
                     {/* Public Key */}
                     <div>
-                        <label className="text-xs font-bold text-[#e7b9aa] uppercase tracking-wider mb-2 block">
+                        <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2 block">
                             Wallet Address (Public Key)
                         </label>
                         <div className="bg-black/40 border border-zinc-700 rounded-lg p-3 flex items-center gap-3">
@@ -62,8 +62,8 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, wallet }
 
                     {/* Private Key */}
                     <div>
-                        <label className="text-xs font-bold text-[#e7b9aa] uppercase tracking-wider mb-2 block">
-                            Private Key <span className="text-[#e7b9aa]">(KEEP SECRET)</span>
+                        <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2 block">
+                            Private Key <span className="text-zinc-500">(KEEP SECRET)</span>
                         </label>
                         <div className="bg-black/40 border border-zinc-700 rounded-lg p-3 flex items-center gap-3 relative">
                             <code className={`flex-1 text-sm font-mono break-all ${showPrivateKey ? 'text-zinc-400' : 'text-zinc-600 blur-sm select-none'}`}>

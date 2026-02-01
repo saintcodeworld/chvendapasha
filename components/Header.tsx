@@ -9,7 +9,7 @@ interface HeaderProps {
   onSettingsClick: () => void;
 }
 
-const mainLogo = '/smokingchickenfish.png';
+const mainLogo = '/Без названия (1).png';
 
 const Header: React.FC<HeaderProps> = ({ status, onLogout, onSettingsClick }) => {
   const isActive = status === MinerStatus.MINING || status === MinerStatus.TAB_MINING;
@@ -27,13 +27,13 @@ const Header: React.FC<HeaderProps> = ({ status, onLogout, onSettingsClick }) =>
         <div className="flex items-center justify-center">
           <PillNav
             logo={mainLogo}
-            logoAlt="Smoking Chicken Fish"
+            logoAlt="$WWR MADE BY WHITE WHALE DEV"
             items={navItems}
             activeHref="#dashboard"
-            baseColor="linear-gradient(145deg, #e8b7a7, #d5a595)"
-            pillColor="#e8b7a7"
+            baseColor="linear-gradient(145deg, #2e2d2d, #212121)"
+            pillColor="#1a1a1a"
             hoveredPillTextColor="#1a1a1a"
-            pillTextColor="#1a1a1a"
+            pillTextColor="#fff"
             className="!relative !top-0 !left-0 !w-auto"
             initialLoadAnimation={true}
           />

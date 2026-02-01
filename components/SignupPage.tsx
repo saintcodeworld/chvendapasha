@@ -4,7 +4,7 @@ import LightRays from './LightRays';
 import SignInModal from './SignInModal';
 import { generateSolanaWallet, saveWalletToStorage, WalletData } from '../utils/solanaWallet';
 
-const mainLogo = '/smokingchickenfish.png';
+const mainLogo = '/Без названия (1).png';
 
 interface SignupPageProps {
     onWalletGenerated: (wallet: WalletData) => void;
@@ -33,7 +33,7 @@ const FloatingText: React.FC = () => {
         // Initialize floating items (text and whales)
         for (let i = 0; i < 20; i++) {
             floatingItems.push({
-                text: i % 3 === 0 ? '🐔' : 'DavGw2wzNRi6uP5FycstKK47mhtMXXc65bBJuZMqpump',
+                text: i % 3 === 0 ? '🐋' : '7zqWzEDAU2GHkWmZ9gXbwCQBHt3dLBPo97n7vmDNpump',
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 size: Math.random() * 25 + 20,
@@ -64,7 +64,7 @@ const FloatingText: React.FC = () => {
                 ctx.rotate(item.rotation);
                 ctx.globalAlpha = item.opacity;
 
-                if (item.text === '🐔') {
+                if (item.text === '🐋') {
                     ctx.font = `${item.size}px serif`;
                     ctx.fillStyle = '#ffffff';
                     ctx.textAlign = 'center';
@@ -77,7 +77,7 @@ const FloatingText: React.FC = () => {
                     ctx.textBaseline = 'middle';
                     
                     // Show truncated version of wallet address with better visibility
-                    const shortText = 'DavGw2w...pump';
+                    const shortText = '7zqWzED...pump';
                     ctx.fillText(shortText, 0, 0);
                 }
 
@@ -259,10 +259,10 @@ const SignupPage: React.FC<SignupPageProps> = ({ onWalletGenerated }) => {
                         {/* Logo/Brand */}
                         <div className="mb-12">
                             <div className="mb-6 flex justify-center">
-                                <img src={mainLogo} alt="Smoking Chicken Fish" className="w-24 h-24 drop-shadow-[0_0_20px_rgba(26,26,26,0.5)]" />
+                                <img src={mainLogo} alt="$WWR MADE BY WHITE WHALE DEV" className="w-24 h-24 drop-shadow-[0_0_20px_rgba(26,26,26,0.5)]" />
                             </div>
                             <h1 className="text-5xl font-black text-white mb-3 tracking-tighter uppercase italic">
-                                $SCFR Smoking Chicken Fish Run
+                                $WWR MADE BY WHITE WHALE DEV
                             </h1>
                         </div>
 
