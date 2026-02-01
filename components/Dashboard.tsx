@@ -89,7 +89,7 @@ const Dashboard: React.FC<DashboardProps> = ({
           </div>
 
           {/* Top Right - Miner Controls (Withdraw UI) */}
-          <div className="absolute top-36 right-4 pointer-events-auto">
+          <div className="absolute top-56 right-4 pointer-events-auto">
             <div className="w-96">
               <MinerControls
                 status={status}
