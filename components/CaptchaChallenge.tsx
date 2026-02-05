@@ -190,7 +190,7 @@ const CaptchaChallenge: React.FC<CaptchaChallengeProps> = ({ onVerify, onSuccess
             }
 
             keysPressed.current[e.code] = true;
-            
+
             if (e.code === 'Space') {
                 e.preventDefault();
                 if (gameState === 'IDLE') {
@@ -249,7 +249,7 @@ const CaptchaChallenge: React.FC<CaptchaChallengeProps> = ({ onVerify, onSuccess
 
             // Update Character
             const p = characterRef.current;
-            
+
             if (isPlaying) {
                 // Variable Gravity
                 const gravity = cfg.gravity;
@@ -546,7 +546,7 @@ const CaptchaChallenge: React.FC<CaptchaChallengeProps> = ({ onVerify, onSuccess
                 </div>
             )}
 
-            
+
             {/* Game Info Overlay - Removed from canvas, now in Dashboard */}
         </div>
     );
